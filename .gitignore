@@ -1,12 +1,2 @@
-# SECTION ./tools/dosfstools
-tools/dosfstools/config.*
-tools/dosfstools/compile
-tools/dosfstools/missing
-tools/dosfstools/install-sh
-tools/dosfstools/test-driver
-tools/dosfstools/configure
-tools/dosfstools/configure~
-tools/dosfstools/src/*.o
-
 
 
