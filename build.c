@@ -8,10 +8,7 @@ void fmt_dsk();
 #define IMGPATH "./dsk.img"
 
 void bld(Arguments args){
-    cpm_mkdir(BUILDDIR);
-    Cmd fasm = cpm_cmd_new("fasm");
-    cpm_cmd_append(&fasm, "./bootloader/boot.s", BUILDDIR"boot.bin");
-    cpm_cmd_exec(fasm);
+   cpm_submodule("./bootloader", 0);
 
     mkdsk();
     fmt_dsk();
@@ -22,6 +19,9 @@ void embed_dsk(){
     Cmd dd = cpm_cmd_new("dd");
     cpm_cmd_append(&dd, "if="BUILDDIR "boot.bin", "of="IMGPATH, "conv=notrunc" );
     cpm_cmd_exec(dd);
+
+    Cmd stg2 = cpm_cmd_new("dd");
+    cpm_cmd_append(&stg2, "if="BUILDDIR"main.bin", "of="IMGPATH, );
 }
 
 void mkdsk(){

@@ -1,4 +1,4 @@
-; build with fasm. 
+; build with fasm.
 ; FASM Docs: https://flatassembler.net/docs.php?article=manual#2.1.25
 
 org 0x7c00
@@ -6,7 +6,7 @@ org 0x7c00
 include 'fatspecs.s'
 
 _start:
-    jmp BIOSSKIP    
+    jmp BIOSSKIP
 
 macro failure code*
 {
@@ -44,7 +44,7 @@ CheckEDD:
     mov ax, 0x41
     mov bx, 0x55aa
     mov dl, 0x80
-    int 0x13  
+    int 0x13
     jnc main
     failure 'E'
 
@@ -60,5 +60,3 @@ fail_msg: db 'CRITICAL ERROR, BOOT HALTED WITH CODE: ', 0x0
 dap_transfer_err: db 'Failure to Transfer disk contents', 0x0
 times 510 - ($-$$) db 0
 dw 0xaa55
-
-times 512 db 'A'
